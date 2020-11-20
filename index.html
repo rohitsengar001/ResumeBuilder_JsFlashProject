@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeBuid</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand "><b>Resume<span class="text-danger">Builder<b></span></a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark bg-danger my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <!-- navbar end -->
+    <div class="container shadow-lg my-5">
+        <hr>
+        <div class="my-5 text-center" id="Heading-personal-details">
+            <h3>PERSONAL DETAILS<i class="fa fa-plus-circle fa-2x text-primary btn" aria-hidden="true"
+                    id="icon-Heading-personal-details"></i></h3>
+        </div>
+        <hr>
+
+        <form>
+            <div id="personal-details">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text person">Person</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="First Name">
+                    <input type="text" class="form-control" placeholder="Middle Name">
+                    <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="mobile">Mobile</label>
+                        <input type="tel" class="form-control" id="mobile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="addres">Address</label>
+                    <textarea id="addres" class="form-control" name="address" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Check me out
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <h3>ACADEMICS & SKILLS <br><i class="fa fa-plus-circle fa-2x text-primary btn" aria-hidden="true"
+                        id="addAcademic"></i></h3>
+            </div>
+
+            <hr>
+
+
+            <!--! academic details -->
+            <div id="acedmic-details">
+                <!-- marks details -->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Highschool</span>
+                        <span class="input-group-text">Marks</span>
+                    </div>
+                    <input class="form-control" type="text" name="HMarks" placeholder="00.00" aria-label="Recipient's "
+                        aria-describedby="marks">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Institute Name</span>
+                    </div>
+                    <input class="form-control" type="text" name="HMarks" placeholder="" aria-label="Recipient's "
+                        aria-describedby="marks">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Year</span>
+                    </div>
+                    <input class="form-control" type="month" name="HMarks" placeholder="" aria-label="Recipient's "
+                        aria-describedby="marks">
+
+                </div>
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Intermediate</span>
+                        <span class="input-group-text">Marks</span>
+                    </div>
+                    <input class="form-control" type="text" name="IMarks" placeholder="00.00" aria-label="Recipient's "
+                        aria-describedby="Imarks">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Institute Name</span>
+                    </div>
+                    <input class="form-control" type="text" name="HMarks" placeholder="" aria-label="Recipient's "
+                        aria-describedby="marks">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Year</span>
+                    </div>
+                    <input class="form-control" type="month" name="HMarks" placeholder="" aria-label="Recipient's "
+                        aria-describedby="marks">
+
+                </div>
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Graduation</span>
+                        <span class="input-group-text">Marks</span>
+                    </div>
+                    <input class="form-control" type="text" name="IMarks" placeholder="00.00" aria-label="Recipient's "
+                        aria-describedby="Imarks">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Institute Name</span>
+                    </div>
+                    <input class="form-control" type="text" name="HMarks" placeholder="" aria-label="Recipient's "
+                        aria-describedby="marks">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Year</span>
+                    </div>
+                    <input class="form-control" type="month" name="HMarks" placeholder="" aria-label="Recipient's "
+                        aria-describedby="marks">
+
+                </div>
+                <!-- marks detail end -->
+                <!-- skills set start -->
+                <div id="skills-0">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">Skills</span>
+                        </div>
+                        <input class="form-control" type="text" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="skill-addon-0"><i class="fa fa-plus btn btn-primary"
+                                    aria-hidden="true"></i></span>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- skills set end -->
+                <!-- project details start -->
+                <div class="my-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">Projects Name</span>
+                        </div>
+                        <input class="form-control" type="text" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">Year</span>
+                        </div>
+                        <input class="form-control" type="month" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">To</span>
+                        </div>
+                        <input class="form-control" type="month" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon"><i class="fa fa-plus"
+                                    aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- project details end -->
+                <!-- extracarricular activity -->
+                <div class="my-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">ExtraCarricular Activity</span>
+                        </div>
+                        <input class="form-control" type="text" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">Year</span>
+                        </div>
+                        <input class="form-control" type="month" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">To</span>
+                        </div>
+                        <input class="form-control" type="month" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon"><i class="fa fa-plus"
+                                    aria-hidden="true"></i></span>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- extracarricular activity -->
+                <!-- language start -->
+                <div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon">Language</span>
+                        </div>
+                        <input class="form-control" type="text" name="" placeholder="Recipient's text"
+                            aria-label="Recipient's " aria-describedby="my-addon">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="my-addon"><i class="fa fa-plus"
+                                    aria-hidden="true"></i></span>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- language end -->
+            </div>
+
+            <!-- !end academic details -->
+
+            <!-- ! WORKING HISTORY  -->
+            <hr>
+            <div class="text-center">
+                <h3>WORKING HISTORY <br><i class="fa fa-plus-circle fa-2x text-primary btn" id="working-history-addon"
+                        aria-hidden="true"></i></h3>
+            </div>
+            
+            <hr>
+            <div id="working-history">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history co" id="">Designation</span>
+                    </div>
+                    <input class="form-control" type="text" name="" placeholder="Type Name..." aria-label="Recipient's "
+                        aria-describedby="my-addon">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history" id="">Year</span>
+                    </div>
+                    <input class="form-control" type="month" name="" placeholder="Recipient's text"
+                        aria-label="Recipient's " aria-describedby="my-addon">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history" id="">To</span>
+                    </div>
+                    <input class="form-control" type="month" name="" placeholder="Recipient's text"
+                        aria-label="Recipient's " aria-describedby="">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history co" id="">Oeganization Name</span>
+                    </div>
+                    <input class="form-control " type="text" name="" placeholder="Type Name..."
+                        aria-label="Recipient's " aria-describedby="my-addon">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history co" id="">Achievements & Tasks</span>
+                    </div>
+                    <input class="form-control " type="text" name="" placeholder="Type Name..."
+                        aria-label="Recipient's " aria-describedby="my-addon">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history" id=""><i class="fa fa-plus btn btn-primary"
+                                aria-hidden="true"></i></span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text working-history co" id="">Location</span>
+                    </div>
+                    <input class="form-control " type="text" name="" placeholder="Type Name..."
+                        aria-label="Recipient's " aria-describedby="my-addon">
+                    <!-- <div class="input-group-prepend">
+                        <span class="input-group-text working-history" id=""><i class="fa fa-plus btn btn-primary"
+                                aria-hidden="true"></i></span>
+                    </div> -->
+                </div>
+                <div class="text-center" style="background-color: #60eaf5a6;">
+                    <span class="">Add More <i class="fa fa-plus btn btn-primary mx-1"
+                        aria-hidden="true"></i></span>
+                </div>
+                
+            </div>
+            <!-- !career objective -->
+            <hr>
+            <div class="text-center">
+                <h3>CAREER OBJECTIVE <br><i class="fa fa-plus-circle fa-2x text-primary btn " id="icon-Career-Objective"
+                        aria-hidden="true"></i></h3>
+            </div>
+            
+            <hr>
+            <div id="career-objective">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text career" id="my-addon">Objective</span>
+                    </div>
+                    <textarea name="" id="" cols="135" rows="3"></textarea>
+    
+                </div>
+            </div>
+           
+
+
+
+            <button type="submit" class="btn btn-primary my-2">Submit</button>
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
