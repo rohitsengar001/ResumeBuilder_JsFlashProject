@@ -5,6 +5,7 @@ let personalDetails = document.getElementById('personal-details');
 let workingHistoryBody = document.getElementById('working-history');
 let careerObjectiveBody = document.getElementById("career-objective");
 
+
 // console.log(iconHeadPersDets);
 iconHeadPersDets.style.display = "none";
 (function () {
@@ -36,23 +37,63 @@ addAcademic.addEventListener('click', function () {
 
 });
 
-//!skill addon eventListener
-let count = 0;
-let skilladd = document.getElementById('skill-addon-0');
+//!Add skill 
 
+let skilladd = document.getElementById('skill-addon-0');
+let skillCount = 0;
 skilladd.addEventListener('click', function () {
   let skillId = document.getElementById('skills-0');
   let html = skillId.childNodes[1];
   let cln = html.cloneNode(true);
   cln.childNodes[5].childNodes[1].setAttribute('onclick', 'removeSkills(id)');
-  cln.childNodes[5].childNodes[1].attributes.item(1).value = "skill-addon-" + count;//?skill-addon-0:intially
+  cln.childNodes[5].childNodes[1].attributes.item(1).value = "skill-addon-" + skillCount;//?skill-addon-0:intially
   // console.log(cln);
   cln.childNodes[5].childNodes[1].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
   skillId.appendChild(cln);
-  count++;
+  skillCount++;
 
 });
 
+//!ADD Achievement and task
+let iconAchievementTask = document.getElementById("icon-achievement-task-0");
+let taskfieldCount = 0;
+
+iconAchievementTask.addEventListener("click", function () {
+  taskfieldCount++;
+  let achievements = document.getElementById("achievements-0");
+  let cln = achievements.children[0].cloneNode(true);
+  cln.id = `achievement-task-${taskfieldCount}`;//update clone root tag id
+  cln.children[2].children[0].id = `icon-achievement-task-${taskfieldCount}`;
+  cln.children[2].children[0].setAttribute("onclick", "removeSkills(id)");
+  cln.children[2].children[0].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
+  // console.log(cln.children[2].children[0].id);
+  achievements.appendChild(cln);
+
+});
+//!Add main achievements
+let iconAddMainAchievement = document.getElementById("icon-add-achievements");
+let achievementIdCount = 0;
+iconAddMainAchievement.addEventListener("click", function () {
+  achievementIdCount++;
+  let mainAchievements = document.getElementById("achievements");
+  let cln = mainAchievements.children[0].cloneNode(true);
+  cln.id = `main-achievements-${achievementIdCount}`;
+  cln.children[3].id = `achievements-${achievementIdCount}`;
+  console.log(cln.children[3].children.length);
+  let obj = cln.children[3].children;
+  for (let i = 1; i < obj.length; i++) {
+    cln.children[3].children[i].id = `achievement-task-0-${achievementIdCount}`;
+
+  }
+  console.log(cln.children[3].children[0].children[2].children[0].id);
+  cln.children[3].children[0].children[2].children[0].id = `icon-achievement-task-0-${achievementIdCount}`;//set id of skill add icon
+  cln.children[3].children[0].children[2].children[0].setAttribute("onclick", "removeSkills(id)")
+  achievements.appendChild(cln);
+  console.log(cln);
+
+
+
+});
 //!personal Details Icon EventListener
 let personalDetailsHeadIcon = document.getElementById("icon-Heading-personal-details");
 personalDetailsHeadIcon.addEventListener("click", function () {
@@ -63,7 +104,7 @@ personalDetailsHeadIcon.addEventListener("click", function () {
     personalDetailsHeadIcon.setAttribute('flag', 'minus-button');
   } else {
     personalDetails.style.display = "none";
-    console.log(iconHeadPersDets.attributes);
+    // console.log(iconHeadPersDets.attributes);
     iconHeadPersDets.attributes.item(0).value = "fa fa-plus-circle fa-2x text-primary btn";
     personalDetailsHeadIcon.setAttribute('flag', 'plus-button');
   }
@@ -128,8 +169,8 @@ iconCarrerObjective.addEventListener('click', function () {
   }
 });
 
-//!remove node/object
 
+//!remove skills field
 function removeSkills(id) {
   element = document.getElementById(id).parentNode.parentNode.parentNode;
   // console.log(element.children);
@@ -137,14 +178,9 @@ function removeSkills(id) {
     if ((element.children[i].children[2].children[0].id) == id) {
       // console.log(element.children[i]);
       element.children[i].remove();
-
     }
-
   }
-
-  // element.remove();
 }
-
 
 
 
