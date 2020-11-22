@@ -63,7 +63,7 @@ iconAchievementTask.addEventListener("click", function () {
   let achievements = document.getElementById("achievements-0");
   let cln = achievements.children[0].cloneNode(true);
   cln.id = `achievement-task-${taskfieldCount}`;//update clone root tag id
-  cln.children[2].children[0].id = `icon-achievement-task-${taskfieldCount}`;
+  cln.children[2].children[0].id = `icon-achievement-task-${Math.floor(Math.random() * 100)}`;
   cln.children[2].children[0].setAttribute("onclick", "removeSkills(id)");
   cln.children[2].children[0].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
   // console.log(cln.children[2].children[0].id);
@@ -79,11 +79,10 @@ iconAddMainAchievement.addEventListener("click", function () {
   let cln = mainAchievements.children[0].cloneNode(true);
   cln.id = `main-achievements-${achievementIdCount}`;
   cln.children[3].id = `achievements-${achievementIdCount}`;
-  console.log(cln.children[3].children.length);
   let obj = cln.children[3].children;
+
   for (let i = 1; i < obj.length; i++) {
     cln.children[3].children[i].id = `achievement-task-0-${achievementIdCount}`;
-
   }
   console.log(cln.children[3].children[0].children[2].children[0].id);
   cln.children[3].children[0].children[2].children[0].id = `icon-achievement-task-0-${achievementIdCount}`;//set id of skill add icon
@@ -113,6 +112,7 @@ personalDetailsHeadIcon.addEventListener("click", function () {
 
 //! Input name of states into to inputState object
 let inputState = document.getElementById("inputState");
+
 (function () {
   let state = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana",
     "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra",
