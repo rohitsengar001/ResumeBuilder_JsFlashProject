@@ -47,50 +47,119 @@ skilladd.addEventListener('click', function () {
   let cln = html.cloneNode(true);
   cln.childNodes[5].childNodes[1].setAttribute('onclick', 'removeSkills(id)');
   cln.childNodes[5].childNodes[1].attributes.item(1).value = "skill-addon-" + skillCount;//?skill-addon-0:intially
-  // console.log(cln);
+  cln.childNodes[3].value = "";
+  // console.log(cln.childNodes[3]);
   cln.childNodes[5].childNodes[1].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
   skillId.appendChild(cln);
   skillCount++;
 
 });
 
-//!ADD Achievement and task
-let iconAchievementTask = document.getElementById("icon-achievement-task-0");
-let taskfieldCount = 0;
+// !ADD PROJECT DETAILS
+let iconAddPorject = document.getElementById("icon-addProject");
+let addProjectCounter = 0;
+iconAddPorject.addEventListener("click", function () {
+  addProjectCounter++;
+  let projectDetails = document.getElementById("project-details");
+  let projectDetailsChild = document.getElementById("project-details").children[0];
+  let cln = projectDetailsChild.cloneNode(true);
+  cln.children[2].children[0].id = `my-addon-${addProjectCounter}`;
+  cln.children[1].value = "";
+  cln.children[3].value = "";
+  cln.children[5].value = "";
+  cln.children[6].children[0].children[0].attributes[0].value="fa fa-minus-square btn btn-danger"
+  cln.children[6].children[0].children[0].setAttribute("onclick","removeSkills(id)")
+  cln.children[6].children[0].id=`icon-addProject-${addProjectCounter}`;
 
-iconAchievementTask.addEventListener("click", function () {
+  // cln.children[1].children[0].value="";
+  // cln.children[2].children[0].value="";
+  console.log(cln.children[6].children[0].id);
+  projectDetails.append(cln);
+});
+//!ADD Achievement and task
+// let iconAchievementTask = document.getElementById("icon-achievement-task-0");
+let taskfieldCount = 0;
+function AddAchievementField(buttonId) {
   taskfieldCount++;
-  let achievements = document.getElementById("achievements-0");
+
+  let buttonObj = document.getElementById(buttonId);
+  parentNodeId = buttonObj.parentNode.parentNode.parentNode.id;
+  // console.log(buttonObj.parentNode.parentNode.parentNode.id);
+  let achievements = document.getElementById(parentNodeId);
   let cln = achievements.children[0].cloneNode(true);
+
   cln.id = `achievement-task-${taskfieldCount}`;//update clone root tag id
+  cln.children[1].value = "";
   cln.children[2].children[0].id = `icon-achievement-task-${Math.floor(Math.random() * 100)}`;
   cln.children[2].children[0].setAttribute("onclick", "removeSkills(id)");
   cln.children[2].children[0].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
-  // console.log(cln.children[2].children[0].id);
+  // console.log(cln);
   achievements.appendChild(cln);
 
-});
+}
+// iconAchievementTask.addEventListener("click", function () {
+
+// });
 //!Add main achievements
 let iconAddMainAchievement = document.getElementById("icon-add-achievements");
-let achievementIdCount = 0;
+let achivementAndTaskCounter = 0;
 iconAddMainAchievement.addEventListener("click", function () {
-  achievementIdCount++;
   let mainAchievements = document.getElementById("achievements");
-  let cln = mainAchievements.children[0].cloneNode(true);
-  cln.id = `main-achievements-${achievementIdCount}`;
-  cln.children[3].id = `achievements-${achievementIdCount}`;
-  let obj = cln.children[3].children;
+  let htmlAchievement = '';
+  let addNewHtmlAchievement = '';
 
-  for (let i = 1; i < obj.length; i++) {
-    cln.children[3].children[i].id = `achievement-task-0-${achievementIdCount}`;
-  }
-  console.log(cln.children[3].children[0].children[2].children[0].id);
-  cln.children[3].children[0].children[2].children[0].id = `icon-achievement-task-0-${achievementIdCount}`;//set id of skill add icon
-  cln.children[3].children[0].children[2].children[0].setAttribute("onclick", "removeSkills(id)")
-  achievements.appendChild(cln);
-  console.log(cln);
+  htmlAchievement = mainAchievements.innerHTML;
+  addNewHtmlAchievement = `<div id="main-achievements-0">
+  <br>
+  <div class="input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text working-history co" id="">Designation</span>
+      </div>
+      <input class="form-control" type="text" name="" placeholder="Type Name..."
+          aria-label="Recipient's " aria-describedby="my-addon">
 
-
+      <div class="input-group-prepend">
+          <span class="input-group-text working-history" id="">Year</span>
+      </div>
+      <input class="form-control" type="month" name="" placeholder="Recipient's text"
+          aria-label="Recipient's " aria-describedby="my-addon">
+      <div class="input-group-prepend">
+          <span class="input-group-text working-history" id="">To</span>
+      </div>
+      <input class="form-control" type="month" name="" placeholder="Recipient's text"
+          aria-label="Recipient's " aria-describedby="">
+  </div>
+  <div class="input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text working-history co" id="">Organization Name</span>
+      </div>
+      <input class="form-control " type="text" name="" placeholder="Type Name..."
+          aria-label="Recipient's " aria-describedby="my-addon">
+  </div>
+  <div id="achievements-0-${achivementAndTaskCounter}">
+      <div class="input-group" id="achievement-task-0">
+          <div class="input-group-prepend">
+              <span class="input-group-text working-history co" id="">Achievements & Tasks</span>
+          </div>
+          <input class="form-control " type="text" name="" placeholder="Type Name..."
+              aria-label="Recipient's " aria-describedby="my-addon">
+          <div class="input-group-prepend">
+              <span class="input-group-text working-history" id=icon-achievement-task-0-${achivementAndTaskCounter}" onclick="AddAchievementField(id)"><i
+                      class="fa fa-plus btn btn-primary" aria-hidden="true"></i></span>
+          </div>
+      </div>
+  </div>
+  <!-- location section-->
+  <div class="input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text working-history co" id="">Location</span>
+      </div>
+      <input class="form-control " type="text" name="" placeholder="Type Name..."
+          aria-label="Recipient's " aria-describedby="my-addon">
+  </div>
+</div>`;
+  achivementAndTaskCounter++;
+  mainAchievements.innerHTML = htmlAchievement + '<br>' + addNewHtmlAchievement;
 
 });
 //!personal Details Icon EventListener
@@ -181,6 +250,7 @@ function removeSkills(id) {
     }
   }
 }
+
 
 
 
