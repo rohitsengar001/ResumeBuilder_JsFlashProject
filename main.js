@@ -55,15 +55,22 @@ skilladd.addEventListener('click', function () {
 
 });
 
-// !ADD PROJECT DETAILS
-let iconAddPorject = document.getElementById("icon-addProject");
+// !ADD PROJECT DETAILS & EXTRA CARRICULAR ACTIVITY
+let iconAddProject = document.getElementById("icon-addProject");
+let projectDetails = document.getElementById("project-details");
+let iconExtraCarricular=document.getElementById("icon-extra-activity");
+let extraCarricularRoot=document.getElementById("extra-carricular");
+
 let addProjectCounter = 0;
-iconAddPorject.addEventListener("click", function () {
+iconAddProject.onclick=()=>addProjectFieldName(projectDetails,iconAddProject);
+iconExtraCarricular.onclick=()=>addProjectFieldName(extraCarricularRoot,iconExtraCarricular);
+
+ function addProjectFieldName (root,iconObj) {
   addProjectCounter++;
-  let projectDetails = document.getElementById("project-details");
-  let projectDetailsChild = document.getElementById("project-details").children[0];
+  iconId=iconObj.id;
+  let projectDetailsChild = root.children[0];
   let cln = projectDetailsChild.cloneNode(true);
-  cln.children[2].children[0].id = `my-addon-${addProjectCounter}`;
+  cln.children[2].children[0].id = `${iconId}-${addProjectCounter}`;
   cln.children[1].value = "";
   cln.children[3].value = "";
   cln.children[5].value = "";
@@ -73,9 +80,10 @@ iconAddPorject.addEventListener("click", function () {
 
   // cln.children[1].children[0].value="";
   // cln.children[2].children[0].value="";
-  console.log(cln.children[6].children[0].id);
-  projectDetails.append(cln);
-});
+  console.log(cln.children[2].children[0].id);
+  root.append(cln);
+}
+
 //!ADD Achievement and task
 // let iconAchievementTask = document.getElementById("icon-achievement-task-0");
 let taskfieldCount = 0;
@@ -199,6 +207,7 @@ let inputState = document.getElementById("inputState");
   // console.log(inputState.innerHTML);
 })();
 
+//!working history add-on button
 let workingHistoryAddon = document.getElementById("working-history-addon");
 workingHistoryAddon.addEventListener('click', function () {
   let workingHistoryBody = document.getElementById('working-history');
@@ -250,6 +259,7 @@ function removeSkills(id) {
     }
   }
 }
+
 
 
 
