@@ -58,29 +58,30 @@ skilladd.addEventListener('click', function () {
 // !ADD PROJECT DETAILS & EXTRA CARRICULAR ACTIVITY
 let iconAddProject = document.getElementById("icon-addProject");
 let projectDetails = document.getElementById("project-details");
-let iconExtraCarricular=document.getElementById("icon-extra-activity");
-let extraCarricularRoot=document.getElementById("extra-carricular");
+let iconExtraCarricular = document.getElementById("icon-extra-activity");
+let extraCarricularRoot = document.getElementById("extra-carricular");
 
 let addProjectCounter = 0;
-iconAddProject.onclick=()=>addProjectFieldName(projectDetails,iconAddProject);
-iconExtraCarricular.onclick=()=>addProjectFieldName(extraCarricularRoot,iconExtraCarricular);
+iconAddProject.onclick = () => addProjectFieldName(projectDetails, iconAddProject);
+iconExtraCarricular.onclick = () => addProjectFieldName(extraCarricularRoot, iconExtraCarricular);
 
- function addProjectFieldName (root,iconObj) {
+function addProjectFieldName(root, iconObj) {
   addProjectCounter++;
-  iconId=iconObj.id;
+  iconId = iconObj.id;
   let projectDetailsChild = root.children[0];
   let cln = projectDetailsChild.cloneNode(true);
+  cln.id = `project-details-child-${addProjectCounter}`;
   cln.children[2].children[0].id = `${iconId}-${addProjectCounter}`;
   cln.children[1].value = "";
   cln.children[3].value = "";
   cln.children[5].value = "";
-  cln.children[6].children[0].children[0].attributes[0].value="fa fa-minus-square btn btn-danger"
-  cln.children[6].children[0].children[0].setAttribute("onclick","removeSkills(id)")
-  cln.children[6].children[0].id=`icon-addProject-${addProjectCounter}`;
+  cln.children[6].children[0].children[0].attributes[0].value = "fa fa-minus-square btn btn-danger"
+  cln.children[6].children[0].children[0].setAttribute("onclick", "deleteProjectAndExtraCarr(id)");
+  cln.children[6].children[0].children[0].id = `${iconObj.id}-${addProjectCounter}`;
 
   // cln.children[1].children[0].value="";
   // cln.children[2].children[0].value="";
-  console.log(cln.children[2].children[0].id);
+  // console.log(iconObj.id);
   root.append(cln);
 }
 
@@ -260,6 +261,22 @@ function removeSkills(id) {
   }
 }
 
+//!delete projectName Field
+
+function deleteProjectAndExtraCarr(iconButtonId) {
+
+  let rootElement = document.getElementById(iconButtonId).parentNode.parentNode;
+  let rootElementId = rootElement.id;//remember this id for deleting Node
+
+  let rootElementParent = rootElement.parentNode;
+  // console.log(rootElementParent.children[1].id, rootElementId);
+  for (let i = 1; i < rootElementParent.children.length; i++) {
+    if ((rootElementParent.children[i].id) == rootElementId) {
+      rootElementParent.children[i].remove();
+    }
+
+  }
+}
 
 
 
