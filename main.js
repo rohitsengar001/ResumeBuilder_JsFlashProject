@@ -357,3 +357,139 @@ function deleteProjectAndExtraCarr(iconButtonId) {
   }
 });
 
+// * validation start from here
+
+let firstName = document.getElementById("firstName");
+let middleName = document.getElementById("middleName");
+let lastName = document.getElementById("lastName");
+// $('#failure').hide();
+// $('#success').hide();
+let userName = {
+  validFirstName: false,
+  validMiddleName: false,
+  validLastName: false
+};
+firstName.onblur = () => nameValidation(firstName);
+middleName.onblur = () => nameValidation(middleName);
+lastName.onblur = () => nameValidation(lastName);
+
+function nameValidation(element) {
+  let regex = /([a-zA-Z]){2,10}/;
+  let str = element.value;
+  let result = regex.test(str);//?return type of test():Boolean
+  // console.log(result);
+
+  if (element.id == "firstName") {
+
+    if (result) {
+      element.classList.remove("is-invalid");
+      userName.validFirstName = true;
+    } else {
+      element.classList.add("is-invalid");
+      userName.validFirstName = false;
+    }
+  }
+  if (element.id == "middleName") {
+    if (result) {
+      element.classList.remove("is-invalid");
+      userName.validMiddleName = true;
+    } else {
+      element.classList.add("is-invalid");
+      userName.validMiddleName = false;
+    }
+  } else {
+    if (result) {
+      element.classList.remove("is-invalid");
+      userName.validLastName = true;
+    } else {
+      element.classList.add("is-invalid");
+      userName.validLastName = false;
+    }
+
+  }
+
+}
+
+//!Email validation
+let email = document.getElementById("email");
+let validEmail = false;
+
+email.addEventListener('blur', () => {
+  let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+  let str = email.value;
+  let result = regex.test(str);//?return type :Boolean
+  let emailFeedback = document.getElementById("email-feedback");
+  let alertMsg = '';
+  if (str == "") {
+    alertMsg = `<b>Email is empty kindly fillout it!</b>`;
+    email.classList.add('is-invalid');
+    validEmail = false;
+  } else {
+    if (result) {
+      email.classList.remove('is-invalid');
+      validEmail = true;
+    } else {
+      alertMsg = `<b>Email is not valid</b>`;
+      email.classList.add('is-invalid');
+      validEmail = false;
+    }
+  }
+  emailFeedback.innerHTML = alertMsg;
+
+});
+
+//!Mobile validation
+let mobile = document.getElementById("mobile");
+let validMobile = false;
+
+mobile.addEventListener('blur', () => {
+  let mobileFeedback = document.getElementById('mobile-feedback');
+  let regex = /([0-9]{10})/;
+  let str = mobile.value;
+  let result = regex.test(str);
+  let alertMsg;
+
+  if (str == "") {
+    alertMsg = `<b>mobile is empty kindly fillout it!</b>`;
+    mobile.classList.add('is-invalid');
+    validEmail = false;
+  } else {
+    if (result) {
+      mobile.classList.remove('is-invalid');
+      validEmail = true;
+    } else {
+      alertMsg = `<b>mobile is not valid</b>`;
+      mobile.classList.add('is-invalid');
+      validEmail = false;
+    }
+  }
+  mobileFeedback.innerHTML = alertMsg;
+});
+//!Adress validate
+let address = document.getElementById('address');
+let addressFeedback = document.getElementById('address-feedback');
+let city = document.getElementById('inputCity');
+let cityFeedback = document.getElementById('city-feedback');
+let validAdress = false;
+let validCity = false;
+address.onblur = () => emptyFilledValidate(address, addressFeedback);
+city.onblur = () => emptyFilledValidate(city, cityFeedback);
+function emptyFilledValidate(fieldBody, alertelement) {
+  let str = fieldBody.value;
+  let addressFeedback = document.getElementById(alertelement);
+  let alertMsg;
+  if (str == "") {
+    alertMsg = `<b>${fieldBody.id} is empty kindly fillout it!</b>`;
+    fieldBody.classList.add('is-invalid');
+    validAdress = false;
+    validCity = false;
+  }
+  else {
+    validAdress = true;
+    validCity = true;
+    fieldBody.classList.remove('is-invalid');
+  }
+  alertelement.innerHTML = alertMsg;
+
+}
+
