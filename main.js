@@ -458,7 +458,7 @@ let validMobile = false;
 
 mobile.addEventListener('blur', () => {
   let mobileFeedback = document.getElementById('mobile-feedback');
-  let regex = /([0-9]{10})/;
+  let regex = /^([0-9]{10})$/;
   let str = mobile.value;
   let result = regex.test(str);
   let alertMsg;
