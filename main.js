@@ -374,9 +374,11 @@ middleName.onblur = () => nameValidation(middleName);
 lastName.onblur = () => nameValidation(lastName);
 
 function nameValidation(element) {
+  let nameFeedback=document.getElementById("name-feedback");
   let regex = /([a-zA-Z]){2,10}/;
   let str = element.value;
   let result = regex.test(str);//?return type of test():Boolean
+  let alertMsg=`<b>*Person's Name must be alphabet / empty field not allowed!</b>`;
   // console.log(result);
 
   if (element.id == "firstName") {
@@ -407,7 +409,7 @@ function nameValidation(element) {
     }
 
   }
-
+  nameFeedback.innerHTML=alertMsg;
 }
 
 //!Email validation
