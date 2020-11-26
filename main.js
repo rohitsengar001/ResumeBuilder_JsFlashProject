@@ -539,7 +539,7 @@ gMarksField.onblur = () => validateMarks(gMarksField, gMarksFeedback);
 function validateMarks(element, marksFeedback) {
   let str = element.value;
   let feedbackField = marksFeedback;
-  let regex = /([0-9]{2})\.([0-9]{2})/;
+  let regex = /^([0-9]{2})\.([0-9]{2})$/;
   let result = regex.test(str);
   let alertMsg = '';
 
