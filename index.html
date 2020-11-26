@@ -107,31 +107,34 @@
                         <span class="input-group-text">Highschool</span>
                         <span class="input-group-text">Marks</span>
                     </div>
-                    <input class="form-control" type="text" name="HMarks" placeholder="00.00" aria-label="Recipient's "
-                        aria-describedby="marks">
-
+                    <input class="form-control" id="hMarks" type="text" name="hMarks" placeholder="00.00"
+                        aria-label="Recipient's " aria-describedby="marks">
                     <div class="input-group-append">
                         <span class="input-group-text">%</span>
                     </div>
                     <div class="input-group-prepend">
                         <span class="input-group-text">Institute Name</span>
                     </div>
-                    <input class="form-control" type="text" name="HMarks" placeholder="" aria-label="Recipient's "
-                        aria-describedby="marks">
+                    <input class="form-control" id="Highschool-Institute-Name" type="text" name="InstituteName"
+                        placeholder="" aria-label="Recipient's " aria-describedby="marks">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Year</span>
                     </div>
                     <input class="form-control" type="month" name="HMarks" placeholder="" aria-label="Recipient's "
                         aria-describedby="marks">
 
+                    <small id="hMarks-feedback" class="form-text  invalid-feedback text-danger"></small>
+                    <small id="hInstitueName-feedback" class="form-text  invalid-feedback text-danger"></small>
+
                 </div>
+                <!-- intermediate  -->
                 <div class="input-group my-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Intermediate</span>
                         <span class="input-group-text">Marks</span>
                     </div>
-                    <input class="form-control" type="text" name="IMarks" placeholder="00.00" aria-label="Recipient's "
-                        aria-describedby="Imarks">
+                    <input class="form-control" id="iMarks" type="text" name="IMarks" placeholder="00.00"
+                        aria-label="Recipient's " aria-describedby="Imarks">
 
                     <div class="input-group-append">
                         <span class="input-group-text">%</span>
@@ -139,29 +142,32 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Institute Name</span>
                     </div>
-                    <input class="form-control" type="text" name="HMarks" placeholder="" aria-label="Recipient's "
-                        aria-describedby="marks">
+                    <input class="form-control" type="text" id="Intermediate-Institute-name" name="Inter-Institute-name"
+                        placeholder="" aria-label="Recipient's " aria-describedby="marks">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Year</span>
                     </div>
-                    <input class="form-control" type="month" name="HMarks" placeholder="" aria-label="Recipient's "
+                    <input class="form-control" type="month" name="" placeholder="" aria-label="Recipient's "
                         aria-describedby="marks">
 
+                    <small id="iMarks-feedback" class="form-text  invalid-feedback text-danger"></small>
+                    <small id="intermediate-institute-feedback" class="form-text  invalid-feedback text-danger"></small>
                 </div>
                 <div class="input-group my-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Graduation</span>
                         <span class="input-group-text">Marks</span>
                     </div>
-                    <input class="form-control" type="text" name="IMarks" placeholder="00.00" aria-label="Recipient's "
-                        aria-describedby="Imarks">
+                    <input class="form-control marks" id="gMarks" type="text" name="IMarks" placeholder="00.00"
+                        aria-label="Recipient's " aria-describedby="Imarks">
                     <div class="input-group-append">
                         <span class="input-group-text">%</span>
                     </div>
                     <div class="input-group-prepend">
                         <span class="input-group-text">Institute Name</span>
                     </div>
-                    <input class="form-control" type="text" name="HMarks" placeholder="" aria-label="Recipient's "
+                    <input class="form-control" type="text" id="graduation-institute-name"
+                        name="graduation-institute-name" placeholder="" aria-label="Recipient's "
                         aria-describedby="marks">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Year</span>
@@ -169,6 +175,8 @@
                     <input class="form-control" type="month" name="HMarks" placeholder="" aria-label="Recipient's "
                         aria-describedby="marks">
 
+                    <small id="gMarks-feedback" class="form-text  invalid-feedback text-danger"></small>
+                    <small id="graduation-institution-feedback" class="form-text  invalid-feedback text-danger"></small>
                 </div>
                 <!-- marks detail end -->
                 <!-- skills set start -->
@@ -177,13 +185,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="my-addon">Skills</span>
                         </div>
-                        <input class="form-control" type="text" name="" placeholder="Recipient's text"
+                        <input class="form-control" id="skill-field-0"  type="text" name="" placeholder="Recipient's text"
                             aria-label="Recipient's " aria-describedby="my-addon">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="skill-addon-0"><i class="fa fa-plus btn btn-primary"
                                     aria-hidden="true"></i></span>
 
                         </div>
+                        <small  id="skill-field-0-feedback" class="form-text  invalid-feedback text-danger"></small>
                     </div>
                 </div>
                 <!-- skills set end -->

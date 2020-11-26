@@ -45,14 +45,14 @@ skilladd.addEventListener('click', function () {
   let skillId = document.getElementById('skills-0');
   let html = skillId.childNodes[1];
   let cln = html.cloneNode(true);
+  skillCount++;
   cln.childNodes[5].childNodes[1].setAttribute('onclick', 'removeSkills(id)');
   cln.childNodes[5].childNodes[1].attributes.item(1).value = "skill-addon-" + skillCount;//?skill-addon-0:intially
   cln.childNodes[3].value = "";
-  // console.log(cln.childNodes[3]);
   cln.childNodes[5].childNodes[1].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
+  console.log(cln.children[1]);
   skillId.appendChild(cln);
-  skillCount++;
-
+  
 });
 
 // !ADD PROJECT DETAILS & EXTRA CARRICULAR ACTIVITY
@@ -465,21 +465,36 @@ mobile.addEventListener('blur', () => {
   }
   mobileFeedback.innerHTML = alertMsg;
 });
-//!Adress validate
+//!validate empty  field
 let address = document.getElementById('address');
-let addressFeedback = document.getElementById('address-feedback');
 let city = document.getElementById('inputCity');
+let hInstituteName = document.getElementById('Highschool-Institute-Name');
+let iInstituteName = document.getElementById('Intermediate-Institute-name');
+let gInstituteName = document.getElementById('graduation-institute-name');
+//all feedbacks fields
+let addressFeedback = document.getElementById('address-feedback');
 let cityFeedback = document.getElementById('city-feedback');
+let hInstituteNameFeedback = document.getElementById('hInstitueName-feedback');
+let iInstituteNameFeedback = document.getElementById('intermediate-institute-feedback');
+let gInstituteNameFeedback = document.getElementById('graduation-institution-feedback');
+
+//all validation flag in reference of Institute Name
+let validateHInstituteName=false;
 let validAdress = false;
 let validCity = false;
+//event fire on blur
 address.onblur = () => emptyFilledValidate(address, addressFeedback);
 city.onblur = () => emptyFilledValidate(city, cityFeedback);
-function emptyFilledValidate(fieldBody, alertelement) {
+hInstituteName.onblur = () => emptyFilledValidate(hInstituteName, hInstituteNameFeedback);
+iInstituteName.onblur = () => emptyFilledValidate(iInstituteName, iInstituteNameFeedback);
+gInstituteName.onblur = () => emptyFilledValidate(gInstituteName, gInstituteNameFeedback);
+//common function to validate all blank field
+function emptyFilledValidate(fieldBody, alertelement) { //?argument list => first:input-text-field $ second : invalid feedback body
   let str = fieldBody.value;
   let addressFeedback = document.getElementById(alertelement);
   let alertMsg;
   if (str == "") {
-    alertMsg = `<b>${fieldBody.id} is empty kindly fillout it!</b>`;
+    alertMsg = `<b>*${fieldBody.id} is empty kindly fillout it!</b>`;
     fieldBody.classList.add('is-invalid');
     validAdress = false;
     validCity = false;
@@ -492,4 +507,33 @@ function emptyFilledValidate(fieldBody, alertelement) {
   alertelement.innerHTML = alertMsg;
 
 }
+//!validate marks
+let highMarksField = document.getElementById("hMarks");
+let iMarksField = document.getElementById("iMarks");
+let gMarksField = document.getElementById("gMarks");
+let highMarksFeedback = document.getElementById("hMarks-feedback");
+let iMarksFeedback = document.getElementById("iMarks-feedback");
+let gMarksFeedback = document.getElementById("gMarks-feedback");
+highMarksField.onblur = () => validateMarks(highMarksField, highMarksFeedback);
+iMarksField.onblur=()=>validateMarks(iMarksField,iMarksFeedback);
+gMarksField.onblur=()=>validateMarks(gMarksField,gMarksFeedback);
+
+function validateMarks(element, marksFeedback) {
+  let str = element.value;
+  let feedbackField = marksFeedback;
+  let regex = /([0-9]{2})\.([0-9]{2})/;
+  let result = regex.test(str);
+  let alertMsg='';
+
+  if (result) {
+      element.classList.remove('is-invalid');
+    } else {
+      
+      element.classList.add('is-invalid');
+      alertMsg=`*<b>Marks should be in format[00.00]!!</b>`;
+  }
+  marksFeedback.innerHTML=alertMsg;
+
+}
+
 
