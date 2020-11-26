@@ -45,14 +45,26 @@ skilladd.addEventListener('click', function () {
   let skillId = document.getElementById('skills-0');
   let html = skillId.childNodes[1];
   let cln = html.cloneNode(true);
+  let fieldObj;
+  let feedbackObj;
   skillCount++;
+
+  let skillFieldId = cln.children[1].id.slice(0, 11);//skill-field
+  let skillFieldIdNew = `${skillFieldId}-${skillCount}`;
+  let skillFieldIdFeedback = `${skillFieldId}-${skillCount}-feedback`;
+  cln.children[1].id = skillFieldIdNew;
+  cln.children[3].id = skillFieldIdFeedback;
   cln.childNodes[5].childNodes[1].setAttribute('onclick', 'removeSkills(id)');
   cln.childNodes[5].childNodes[1].attributes.item(1).value = "skill-addon-" + skillCount;//?skill-addon-0:intially
   cln.childNodes[3].value = "";
   cln.childNodes[5].childNodes[1].childNodes[0].attributes.item(0).value = "fa fa-minus-square btn btn-danger";
-  console.log(cln.children[1]);
+  console.log(cln.children[3].id);
+  console.log(cln.children[1].id);
   skillId.appendChild(cln);
-  
+  fieldObj = document.getElementById(skillFieldIdNew);
+  feedbackObj = document.getElementById(skillFieldIdFeedback);
+  fieldObj.onblur = () => emptyFilledValidate(fieldObj, feedbackObj);
+
 });
 
 // !ADD PROJECT DETAILS & EXTRA CARRICULAR ACTIVITY
@@ -374,11 +386,11 @@ middleName.onblur = () => nameValidation(middleName);
 lastName.onblur = () => nameValidation(lastName);
 
 function nameValidation(element) {
-  let nameFeedback=document.getElementById("name-feedback");
+  let nameFeedback = document.getElementById("name-feedback");
   let regex = /([a-zA-Z]){2,10}/;
   let str = element.value;
   let result = regex.test(str);//?return type of test():Boolean
-  let alertMsg=`<b>*Person's Name must be alphabet / empty field not allowed!</b>`;
+  let alertMsg = `<b>*Person's Name must be alphabet / empty field not allowed!</b>`;
   // console.log(result);
 
   if (element.id == "firstName") {
@@ -409,7 +421,7 @@ function nameValidation(element) {
     }
 
   }
-  nameFeedback.innerHTML=alertMsg;
+  nameFeedback.innerHTML = alertMsg;
 }
 
 //!Email validation
@@ -473,15 +485,18 @@ let city = document.getElementById('inputCity');
 let hInstituteName = document.getElementById('Highschool-Institute-Name');
 let iInstituteName = document.getElementById('Intermediate-Institute-name');
 let gInstituteName = document.getElementById('graduation-institute-name');
+let skillField1 = document.getElementById("skill-field-0");
 //all feedbacks fields
 let addressFeedback = document.getElementById('address-feedback');
 let cityFeedback = document.getElementById('city-feedback');
 let hInstituteNameFeedback = document.getElementById('hInstitueName-feedback');
 let iInstituteNameFeedback = document.getElementById('intermediate-institute-feedback');
 let gInstituteNameFeedback = document.getElementById('graduation-institution-feedback');
+let skillFieldFeedback1 = document.getElementById('skill-field-0-feedback');
+
 
 //all validation flag in reference of Institute Name
-let validateHInstituteName=false;
+let validateHInstituteName = false;
 let validAdress = false;
 let validCity = false;
 //event fire on blur
@@ -490,6 +505,7 @@ city.onblur = () => emptyFilledValidate(city, cityFeedback);
 hInstituteName.onblur = () => emptyFilledValidate(hInstituteName, hInstituteNameFeedback);
 iInstituteName.onblur = () => emptyFilledValidate(iInstituteName, iInstituteNameFeedback);
 gInstituteName.onblur = () => emptyFilledValidate(gInstituteName, gInstituteNameFeedback);
+skillField1.onblur = () => emptyFilledValidate(skillField1, skillFieldFeedback1);
 //common function to validate all blank field
 function emptyFilledValidate(fieldBody, alertelement) { //?argument list => first:input-text-field $ second : invalid feedback body
   let str = fieldBody.value;
@@ -517,24 +533,24 @@ let highMarksFeedback = document.getElementById("hMarks-feedback");
 let iMarksFeedback = document.getElementById("iMarks-feedback");
 let gMarksFeedback = document.getElementById("gMarks-feedback");
 highMarksField.onblur = () => validateMarks(highMarksField, highMarksFeedback);
-iMarksField.onblur=()=>validateMarks(iMarksField,iMarksFeedback);
-gMarksField.onblur=()=>validateMarks(gMarksField,gMarksFeedback);
+iMarksField.onblur = () => validateMarks(iMarksField, iMarksFeedback);
+gMarksField.onblur = () => validateMarks(gMarksField, gMarksFeedback);
 
 function validateMarks(element, marksFeedback) {
   let str = element.value;
   let feedbackField = marksFeedback;
   let regex = /([0-9]{2})\.([0-9]{2})/;
   let result = regex.test(str);
-  let alertMsg='';
+  let alertMsg = '';
 
   if (result) {
-      element.classList.remove('is-invalid');
-    } else {
-      
-      element.classList.add('is-invalid');
-      alertMsg=`*<b>Marks should be in format[00.00]!!</b>`;
+    element.classList.remove('is-invalid');
+  } else {
+
+    element.classList.add('is-invalid');
+    alertMsg = `*<b>Marks should be in format[00.00]!!</b>`;
   }
-  marksFeedback.innerHTML=alertMsg;
+  marksFeedback.innerHTML = alertMsg;
 
 }
 
