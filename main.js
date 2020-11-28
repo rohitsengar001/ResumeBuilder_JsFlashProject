@@ -553,5 +553,35 @@ function validateMarks(element, marksFeedback) {
   marksFeedback.innerHTML = alertMsg;
 
 }
-
+//!validate months and year
+let highSchoolYear=document.getElementById("highschool-year");
+let highSchoolYearFeedback=document.getElementById("highchool-year-feedback");
+let intermediateYear=document.getElementById("intermediate-year");
+let intermediateYearFeedback=document.getElementById("intermediate-year-feedback");
+let graduationYear=document.getElementById("graduation-year");
+let graduationYearFeedback=document.getElementById("graduation-year-feedback");
+// console.log(highSchoolYear,highSchoolYearFeedback);
+highSchoolYear.onblur=()=>dateValidator(highSchoolYear,highSchoolYearFeedback);
+intermediateYear.onblur=()=>dateValidator(intermediateYear,intermediateYearFeedback);
+graduationYear.onblur=()=>dateValidator(graduationYear,graduationYearFeedback);
+function dateValidator(fieldBody,feedbackBody){
+  let regex=/^([1-2])([0-9]{2})\-[0-9]/;  //date format
+  let str=fieldBody.value;
+  let result =regex.test(str);//?return type :Boolean
+  console.log(result);
+  let alertMsg;
+  if (str == "") {
+    alertMsg=`<b>*${fieldBody.id} is missing!!</b>`;
+    fieldBody.classList.add('is-invalid');
+  } else {
+    if (result) {
+      fieldBody.classList.remove('is-invalid');
+    }
+    else{
+      fieldBody.classList.add('is-invalid');
+      alertMsg=`*<b>Date format is not valid it should be smaller <=2020</b>`; 
+    }
+  }
+  feedbackBody.innerHTML=alertMsg;
+}
 
