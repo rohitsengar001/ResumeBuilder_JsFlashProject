@@ -82,19 +82,50 @@ function addProjectFieldName(root, iconObj) {
   iconId = iconObj.id;
   let projectDetailsChild = root.children[0];
   let cln = projectDetailsChild.cloneNode(true);
+  let projectNameFiedId = projectDetailsChild.children[1].id;//project field Id of origin field which is mention in html
+  let newProjectNameFieldId = projectNameFiedId.slice(0, 12);
+  let projectNameFeedback = projectDetailsChild.children[7];
+  let originalMonthsYearFirstField = document.getElementById(projectDetailsChild.children[3].id);//months first field of months
+  let originalMonthsYearSecondField = document.getElementById(projectDetailsChild.children[5].id);//months first field of months
+  let clnMonthYearFirstField = cln.children[3];
+  let clnMonthYearFirstFieldFeedback = cln.children[8];
+  let clnMonthYearSecondField = cln.children[5];
+  let clnMonthYearSecondFieldFeedback = cln.children[9];
+  let clnFeedback;
+  let clnTextField;
   cln.id = `project-details-child-${addProjectCounter}`;
   cln.children[2].children[0].id = `${iconId}-${addProjectCounter}`;
+
+  // ? project field name & feedback field
+  cln.children[1].id = `${newProjectNameFieldId}-${addProjectCounter}`;
+  cln.children[7].id = `${newProjectNameFieldId}-${addProjectCounter}-feedback`;
+
+  //?project first field of year & feedback field
+  clnMonthYearFirstField.id = `${originalMonthsYearFirstField.id.slice(0, 17)}-${addProjectCounter}`;//month's first field => clon
+  clnMonthYearFirstFieldFeedback.id = `${originalMonthsYearFirstField.id.slice(0, 17)}-${addProjectCounter}-feedback`;//month's first field => clon
+
+  //?project second field of year & feedback field
+  clnMonthYearSecondField.id = `${originalMonthsYearSecondField.id.slice(0, 19)}-${addProjectCounter}`;//month's second field => clone
+  clnMonthYearSecondFieldFeedback.id = `${originalMonthsYearSecondField.id.slice(0, 19)}-${addProjectCounter}-feedback`;//month's second field => clone
+
+  //?set null value into new generated text of project name and months
   cln.children[1].value = "";
   cln.children[3].value = "";
   cln.children[5].value = "";
+  //?set icon field id & event fire and class
   cln.children[6].children[0].children[0].attributes[0].value = "fa fa-minus-square btn btn-danger"
   cln.children[6].children[0].children[0].setAttribute("onclick", "deleteProjectAndExtraCarr(id)");
   cln.children[6].children[0].children[0].id = `${iconObj.id}-${addProjectCounter}`;
 
-  // cln.children[1].children[0].value="";
-  // cln.children[2].children[0].value="";
-  // console.log(iconObj.id);
+  // console.log(cln.children[3]);
+  // console.log(cln.children[8].id + " ", cln.children[9].id);
   root.append(cln);
+  clnFeedback = document.getElementById(cln.children[7].id);//load the feedback object of clone
+  clnTextField = document.getElementById(cln.children[1].id);
+
+  clnTextField.onblur = () => emptyFilledValidate(clnTextField, clnFeedback);
+  clnMonthYearFirstField.onblur = () => emptyFilledValidate(clnMonthYearFirstField, clnMonthYearFirstFieldFeedback);
+  clnMonthYearSecondField.onblur = () => emptyFilledValidate(clnMonthYearSecondField, clnMonthYearSecondFieldFeedback);
 }
 
 //!ADD Achievement and task
@@ -486,6 +517,8 @@ let hInstituteName = document.getElementById('Highschool-Institute-Name');
 let iInstituteName = document.getElementById('Intermediate-Institute-name');
 let gInstituteName = document.getElementById('graduation-institute-name');
 let skillField1 = document.getElementById("skill-field-0");
+let projectName = document.getElementById('project-name-0');
+
 //all feedbacks fields
 let addressFeedback = document.getElementById('address-feedback');
 let cityFeedback = document.getElementById('city-feedback');
@@ -493,12 +526,14 @@ let hInstituteNameFeedback = document.getElementById('hInstitueName-feedback');
 let iInstituteNameFeedback = document.getElementById('intermediate-institute-feedback');
 let gInstituteNameFeedback = document.getElementById('graduation-institution-feedback');
 let skillFieldFeedback1 = document.getElementById('skill-field-0-feedback');
+let projectNameFeedback = document.getElementById('project-name-0-feedback');
 
 
 //all validation flag in reference of Institute Name
 let validateHInstituteName = false;
 let validAdress = false;
 let validCity = false;
+let validProjectName = false;
 //event fire on blur
 address.onblur = () => emptyFilledValidate(address, addressFeedback);
 city.onblur = () => emptyFilledValidate(city, cityFeedback);
@@ -506,6 +541,7 @@ hInstituteName.onblur = () => emptyFilledValidate(hInstituteName, hInstituteName
 iInstituteName.onblur = () => emptyFilledValidate(iInstituteName, iInstituteNameFeedback);
 gInstituteName.onblur = () => emptyFilledValidate(gInstituteName, gInstituteNameFeedback);
 skillField1.onblur = () => emptyFilledValidate(skillField1, skillFieldFeedback1);
+projectName.onblur = () => emptyFilledValidate(projectName, projectNameFeedback)
 //common function to validate all blank field
 function emptyFilledValidate(fieldBody, alertelement) { //?argument list => first:input-text-field $ second : invalid feedback body
   let str = fieldBody.value;
@@ -554,34 +590,39 @@ function validateMarks(element, marksFeedback) {
 
 }
 //!validate months and year
-let highSchoolYear=document.getElementById("highschool-year");
-let highSchoolYearFeedback=document.getElementById("highchool-year-feedback");
-let intermediateYear=document.getElementById("intermediate-year");
-let intermediateYearFeedback=document.getElementById("intermediate-year-feedback");
-let graduationYear=document.getElementById("graduation-year");
-let graduationYearFeedback=document.getElementById("graduation-year-feedback");
+let highSchoolYear = document.getElementById("highschool-year");
+let highSchoolYearFeedback = document.getElementById("highchool-year-feedback");
+let intermediateYear = document.getElementById("intermediate-year");
+let intermediateYearFeedback = document.getElementById("intermediate-year-feedback");
+let graduationYear = document.getElementById("graduation-year");
+let graduationYearFeedback = document.getElementById("graduation-year-feedback");
+let projectNameYearFirst = document.getElementById("project-name-year-0");
+let projectNameYearFirstFeedback = document.getElementById("project-name-year-0-feedback");
+let projectNameYearSecond = document.getElementById("project-name-year-0-0");
+let projectNameYearSecondFeedback = document.getElementById("project-name-year-0-0-feedback");
 // console.log(highSchoolYear,highSchoolYearFeedback);
-highSchoolYear.onblur=()=>dateValidator(highSchoolYear,highSchoolYearFeedback);
-intermediateYear.onblur=()=>dateValidator(intermediateYear,intermediateYearFeedback);
-graduationYear.onblur=()=>dateValidator(graduationYear,graduationYearFeedback);
-function dateValidator(fieldBody,feedbackBody){
-  let regex=/^([1-2])([0-9]{2})\-[0-9]/;  //date format
-  let str=fieldBody.value;
-  let result =regex.test(str);//?return type :Boolean
-  console.log(result);
+highSchoolYear.onblur = () => dateValidator(highSchoolYear, highSchoolYearFeedback);
+intermediateYear.onblur = () => dateValidator(intermediateYear, intermediateYearFeedback);
+graduationYear.onblur = () => dateValidator(graduationYear, graduationYearFeedback);
+projectNameYearFirst.onblur = () => dateValidator(projectNameYearFirst, projectNameYearFirstFeedback);
+projectNameYearSecond.onblur = () => dateValidator(projectNameYearSecond, projectNameYearSecondFeedback);
+function dateValidator(fieldBody, feedbackBody) {
+  let regex = /^([1-2])([0-9]{2})\-[0-9]/;  //date format
+  let str = fieldBody.value;
+  let result = regex.test(str);//?return type :Boolean
+  // console.log(result);
   let alertMsg;
   if (str == "") {
-    alertMsg=`<b>*${fieldBody.id} is missing!!</b>`;
+    alertMsg = `<b>*${fieldBody.id} is missing!!</b>`;
     fieldBody.classList.add('is-invalid');
   } else {
     if (result) {
       fieldBody.classList.remove('is-invalid');
     }
-    else{
+    else {
       fieldBody.classList.add('is-invalid');
-      alertMsg=`*<b>Date format is not valid it should be smaller <=2020</b>`; 
+      alertMsg = `*<b>Date format is not valid it should be smaller <=2020</b>`;
     }
   }
-  feedbackBody.innerHTML=alertMsg;
+  feedbackBody.innerHTML = alertMsg;
 }
-
