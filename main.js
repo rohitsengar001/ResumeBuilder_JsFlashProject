@@ -518,6 +518,7 @@ let iInstituteName = document.getElementById('Intermediate-Institute-name');
 let gInstituteName = document.getElementById('graduation-institute-name');
 let skillField1 = document.getElementById("skill-field-0");
 let projectName = document.getElementById('project-name-0');
+let extracarriculamField1 = document.getElementById("extracarri-0");
 
 //all feedbacks fields
 let addressFeedback = document.getElementById('address-feedback');
@@ -527,6 +528,7 @@ let iInstituteNameFeedback = document.getElementById('intermediate-institute-fee
 let gInstituteNameFeedback = document.getElementById('graduation-institution-feedback');
 let skillFieldFeedback1 = document.getElementById('skill-field-0-feedback');
 let projectNameFeedback = document.getElementById('project-name-0-feedback');
+let extracarriculamFeedback = document.getElementById("extracarri-0-feedback");
 
 
 //all validation flag in reference of Institute Name
@@ -541,7 +543,8 @@ hInstituteName.onblur = () => emptyFilledValidate(hInstituteName, hInstituteName
 iInstituteName.onblur = () => emptyFilledValidate(iInstituteName, iInstituteNameFeedback);
 gInstituteName.onblur = () => emptyFilledValidate(gInstituteName, gInstituteNameFeedback);
 skillField1.onblur = () => emptyFilledValidate(skillField1, skillFieldFeedback1);
-projectName.onblur = () => emptyFilledValidate(projectName, projectNameFeedback)
+projectName.onblur = () => emptyFilledValidate(projectName, projectNameFeedback);
+extracarriculamField1.onblur = () => emptyFilledValidate(extracarriculamField1, extracarriculamFeedback);
 //common function to validate all blank field
 function emptyFilledValidate(fieldBody, alertelement) { //?argument list => first:input-text-field $ second : invalid feedback body
   let str = fieldBody.value;
@@ -600,12 +603,19 @@ let projectNameYearFirst = document.getElementById("project-name-year-0");
 let projectNameYearFirstFeedback = document.getElementById("project-name-year-0-feedback");
 let projectNameYearSecond = document.getElementById("project-name-year-0-0");
 let projectNameYearSecondFeedback = document.getElementById("project-name-year-0-0-feedback");
+let extracarriculamYearField1 = document.getElementById("extracarri-month-0");
+let extracarriculamYearField1Feedback = document.getElementById("extracarri-month-0-feedback");
+let extracarriculamYearField2 = document.getElementById("extracarri-month-0-0");
+let extracarriculamYearField2Feedback = document.getElementById("extracarri-month-0-0-feedback");
+
 // console.log(highSchoolYear,highSchoolYearFeedback);
 highSchoolYear.onblur = () => dateValidator(highSchoolYear, highSchoolYearFeedback);
 intermediateYear.onblur = () => dateValidator(intermediateYear, intermediateYearFeedback);
 graduationYear.onblur = () => dateValidator(graduationYear, graduationYearFeedback);
 projectNameYearFirst.onblur = () => dateValidator(projectNameYearFirst, projectNameYearFirstFeedback);
 projectNameYearSecond.onblur = () => dateValidator(projectNameYearSecond, projectNameYearSecondFeedback);
+extracarriculamYearField1.onblur = () => dateValidator(extracarriculamYearField1, extracarriculamYearField1Feedback);
+extracarriculamYearField2.onblur = () => dateValidator(extracarriculamYearField2, extracarriculamYearField2Feedback);
 function dateValidator(fieldBody, feedbackBody) {
   let regex = /^([1-2])([0-9]{2})\-[0-9]/;  //date format
   let str = fieldBody.value;
