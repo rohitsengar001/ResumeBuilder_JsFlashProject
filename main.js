@@ -437,10 +437,7 @@ function removeSkills(id) {
         // console.log(element.children[i]);
         element.children[i].remove();
       }
-    } catch (error) {
-      
-    }
-   
+    } catch (error) {}
   }
 }
 
@@ -655,28 +652,42 @@ let gInstituteName = document.getElementById("graduation-institute-name");
 let skillField1 = document.getElementById("skill-field-0");
 let projectName = document.getElementById("project-name-0");
 let extracarriculamField1 = document.getElementById("extracarri-0");
-let designField=document.getElementById("designField-0");
-let designationFieldMonthFirst=document.getElementById("designField-month-0");
-let designationFieldMonthSecond=document.getElementById('designField-month-0-0');
-let organizationName=document.getElementById('organization-name-0');
-let achievementField=document.getElementById('achievementTaskField-0');
-let locationField=document.getElementById('location-0');
+let designField = document.getElementById("designField-0");
+let designationFieldMonthFirst = document.getElementById("designField-month-0");
+let designationFieldMonthSecond = document.getElementById(
+  "designField-month-0-0"
+);
+let organizationName = document.getElementById("organization-name-0");
+let achievementField = document.getElementById("achievementTaskField-0");
+let locationField = document.getElementById("location-0");
 
 //all feedbacks fields
 let addressFeedback = document.getElementById("address-feedback");
 let cityFeedback = document.getElementById("city-feedback");
 let hInstituteNameFeedback = document.getElementById("hInstitueName-feedback");
-let iInstituteNameFeedback = document.getElementById("intermediate-institute-feedback");
-let gInstituteNameFeedback = document.getElementById("graduation-institution-feedback");
+let iInstituteNameFeedback = document.getElementById(
+  "intermediate-institute-feedback"
+);
+let gInstituteNameFeedback = document.getElementById(
+  "graduation-institution-feedback"
+);
 let skillFieldFeedback1 = document.getElementById("skill-field-0-feedback");
 let projectNameFeedback = document.getElementById("project-name-0-feedback");
 let extracarriculamFeedback = document.getElementById("extracarri-0-feedback");
-let designFieldFeedback=document.getElementById("designField-0-feedback");
-let designationFieldMonthFirstFeedback=document.getElementById('designField-month-0-feedback');
-let designationFieldMonthSecondFeedback=document.getElementById('designField-month-0-0-feedback');
-let organizationNameFeedback =document.getElementById('organization-name-0-feedback');
-let achievementFieldFeedback=document.getElementById('achievementTaskField-0-feedback');
-let locationFieldFeedback=document.getElementById('location-0-feedback');
+let designFieldFeedback = document.getElementById("designField-0-feedback");
+let designationFieldMonthFirstFeedback = document.getElementById(
+  "designField-month-0-feedback"
+);
+let designationFieldMonthSecondFeedback = document.getElementById(
+  "designField-month-0-0-feedback"
+);
+let organizationNameFeedback = document.getElementById(
+  "organization-name-0-feedback"
+);
+let achievementFieldFeedback = document.getElementById(
+  "achievementTaskField-0-feedback"
+);
+let locationFieldFeedback = document.getElementById("location-0-feedback");
 
 //all validation flag in reference of Institute Name
 let validateHInstituteName = false;
@@ -698,12 +709,24 @@ projectName.onblur = () =>
   emptyFilledValidate(projectName, projectNameFeedback);
 extracarriculamField1.onblur = () =>
   emptyFilledValidate(extracarriculamField1, extracarriculamFeedback);
-  designField.onblur=()=>emptyFilledValidate(designField,designFieldFeedback);
-  designationFieldMonthFirst.onblur=()=>emptyFilledValidate(designationFieldMonthFirst,designationFieldMonthFirstFeedback);
-  designationFieldMonthSecond.onblur=()=>emptyFilledValidate(designationFieldMonthFirst,designationFieldMonthSecondFeedback);
-  organizationName.onblur=()=>emptyFilledValidate(organizationName,organizationNameFeedback);
-  achievementField.onblur=()=>emptyFilledValidate(achievementField,achievementFieldFeedback);
-  locationField.onblur=()=>emptyFilledValidate(locationField,locationFieldFeedback);
+designField.onblur = () =>
+  emptyFilledValidate(designField, designFieldFeedback);
+designationFieldMonthFirst.onblur = () =>
+  emptyFilledValidate(
+    designationFieldMonthFirst,
+    designationFieldMonthFirstFeedback
+  );
+designationFieldMonthSecond.onblur = () =>
+  emptyFilledValidate(
+    designationFieldMonthFirst,
+    designationFieldMonthSecondFeedback
+  );
+organizationName.onblur = () =>
+  emptyFilledValidate(organizationName, organizationNameFeedback);
+achievementField.onblur = () =>
+  emptyFilledValidate(achievementField, achievementFieldFeedback);
+locationField.onblur = () =>
+  emptyFilledValidate(locationField, locationFieldFeedback);
 //common function to validate all blank field
 function emptyFilledValidate(fieldBody, alertelement) {
   //?argument list => first:input-text-field $ second : invalid feedback body
