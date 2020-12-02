@@ -170,9 +170,13 @@ function AddAchievementField(buttonId) {
   // console.log(buttonObj.parentNode.parentNode.parentNode.id);
   let achievements = document.getElementById(parentNodeId);
   let cln = achievements.children[0].cloneNode(true);
+  // let clnFeedback=achievements.children[3].cloneNode(true);
 
   cln.id = `achievement-task-${taskfieldCount}`; //update clone root tag id
   cln.children[1].value = "";
+  cln.children[1].id=`achievementTaskField-${taskfieldCount}`;//?achievement and task field id
+  cln.children[3].id=`achievementTaskField-${taskfieldCount}-feedback`;//?achievement and task feedback id
+  console.log(cln.children[3]);
   cln.children[2].children[0].id = `icon-achievement-task-${Math.floor(
     Math.random() * 100
   )}`;
@@ -181,10 +185,12 @@ function AddAchievementField(buttonId) {
     "fa fa-minus-square btn btn-danger";
   // console.log(cln);
   achievements.appendChild(cln);
+  achievementAndTaskField=cln.children[1];
+  achievementAndTaskFieldFeedback=cln.children[3];
+  achievementAndTaskField.onblur=()=>emptyFilledValidate(achievementAndTaskField,achievementAndTaskFieldFeedback);
+  
 }
-// iconAchievementTask.addEventListener("click", function () {
 
-// });
 //!Add main achievements
 let iconAddMainAchievement = document.getElementById("icon-add-achievements");
 let achivementAndTaskCounter = 0;
@@ -430,7 +436,7 @@ iconCarrerObjective.addEventListener("click", function () {
 function removeSkills(id) {
   element = document.getElementById(id).parentNode.parentNode.parentNode;
   // console.log(element.children);
-  console.log(element);
+  // console.log(element);
   for (let i = 1; i < element.children.length; i++) {
     try {
       if (element.children[i].children[2].children[0].id == id) {
