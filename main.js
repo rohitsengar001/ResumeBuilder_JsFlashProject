@@ -174,8 +174,8 @@ function AddAchievementField(buttonId) {
 
   cln.id = `achievement-task-${taskfieldCount}`; //update clone root tag id
   cln.children[1].value = "";
-  cln.children[1].id=`achievementTaskField-${taskfieldCount}`;//?achievement and task field id
-  cln.children[3].id=`achievementTaskField-${taskfieldCount}-feedback`;//?achievement and task feedback id
+  cln.children[1].id = `achievementTaskField-${taskfieldCount}`; //?achievement and task field id
+  cln.children[3].id = `achievementTaskField-${taskfieldCount}-feedback`; //?achievement and task feedback id
   console.log(cln.children[3]);
   cln.children[2].children[0].id = `icon-achievement-task-${Math.floor(
     Math.random() * 100
@@ -185,10 +185,13 @@ function AddAchievementField(buttonId) {
     "fa fa-minus-square btn btn-danger";
   // console.log(cln);
   achievements.appendChild(cln);
-  achievementAndTaskField=cln.children[1];
-  achievementAndTaskFieldFeedback=cln.children[3];
-  achievementAndTaskField.onblur=()=>emptyFilledValidate(achievementAndTaskField,achievementAndTaskFieldFeedback);
-  
+  achievementAndTaskField = cln.children[1];
+  achievementAndTaskFieldFeedback = cln.children[3];
+  achievementAndTaskField.onblur = () =>
+    emptyFilledValidate(
+      achievementAndTaskField,
+      achievementAndTaskFieldFeedback
+    );
 }
 
 //!Add main achievements
@@ -666,8 +669,10 @@ let designationFieldMonthSecond = document.getElementById(
 let organizationName = document.getElementById("organization-name-0");
 let achievementField = document.getElementById("achievementTaskField-0");
 let locationField = document.getElementById("location-0");
+let objectiveField = document.getElementById("objectiveField");
 
-//all feedbacks fields
+
+//*all feedbacks fields
 let addressFeedback = document.getElementById("address-feedback");
 let cityFeedback = document.getElementById("city-feedback");
 let hInstituteNameFeedback = document.getElementById("hInstitueName-feedback");
@@ -694,12 +699,13 @@ let achievementFieldFeedback = document.getElementById(
   "achievementTaskField-0-feedback"
 );
 let locationFieldFeedback = document.getElementById("location-0-feedback");
-
+let objectiveFieldFeedback = document.getElementById("objectiveField-feedback");
 //all validation flag in reference of Institute Name
 let validateHInstituteName = false;
 let validAdress = false;
 let validCity = false;
 let validProjectName = false;
+
 //event fire on blur
 address.onblur = () => emptyFilledValidate(address, addressFeedback);
 city.onblur = () => emptyFilledValidate(city, cityFeedback);
@@ -733,6 +739,9 @@ achievementField.onblur = () =>
   emptyFilledValidate(achievementField, achievementFieldFeedback);
 locationField.onblur = () =>
   emptyFilledValidate(locationField, locationFieldFeedback);
+
+objectiveField.onblur = () =>emptyFilledValidate(objectiveField, objectiveFieldFeedback);
+
 //common function to validate all blank field
 function emptyFilledValidate(fieldBody, alertelement) {
   //?argument list => first:input-text-field $ second : invalid feedback body
