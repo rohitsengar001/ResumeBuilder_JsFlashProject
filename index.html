@@ -300,56 +300,66 @@
                         <br>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text working-history co" id="">Designation</span>
+                                <span class="input-group-text working-history" id="">Designation</span>
                             </div>
-                            <input class="form-control" type="text" name="" placeholder="Type Name..."
-                                aria-label="Recipient's " aria-describedby="my-addon">
+                            <input class="form-control" id="designField-0" type="text" name=""
+                                placeholder="Type Designation..." aria-label="Recipient's " aria-describedby="my-addon">
 
                             <div class="input-group-prepend">
                                 <span class="input-group-text working-history" id="">Year</span>
                             </div>
-                            <input class="form-control" type="month" name="" placeholder="Recipient's text"
-                                aria-label="Recipient's " aria-describedby="my-addon">
+                            <input class="form-control" id="designField-month-0" type="month" name=""
+                                placeholder="Recipient's text" aria-label="Recipient's " aria-describedby="my-addon">
                             <div class="input-group-prepend">
                                 <span class="input-group-text working-history" id="">To</span>
                             </div>
-                            <input class="form-control" type="month" name="" placeholder="Recipient's text"
-                                aria-label="Recipient's " aria-describedby="">
+                            <input class="form-control" type="month" id="designField-month-0-0" name=""
+                                placeholder="Recipient's text" aria-label="Recipient's " aria-describedby="">
+                            <small id="designField-0-feedback" class="form-text  invalid-feedback text-danger"></small>
+                            <small id="designField-month-0-feedback"
+                                class="form-text  invalid-feedback text-danger"></small>
+                            <small id="designField-month-0-0-feedback"
+                                class="form-text  invalid-feedback text-danger"></small>
                         </div>
+
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text working-history co" id="">Organization Name</span>
                             </div>
-                            <input class="form-control " type="text" name="" placeholder="Type Name..."
-                                aria-label="Recipient's " aria-describedby="my-addon">
+                            <input class="form-control " id="organization-name-0" type="text" name=""
+                                placeholder="Type Name..." aria-label="Recipient's " aria-describedby="my-addon">
+                            <small id="organization-name-0-feedback"
+                                class="form-text  invalid-feedback text-danger"></small>
                         </div>
                         <div id="achievements-0">
                             <div class="input-group" id="achievement-task-0">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text working-history co" id="">Achievements & Tasks</span>
                                 </div>
-                                <input class="form-control " type="text" name="" placeholder="Type Name..."
-                                    aria-label="Recipient's " aria-describedby="my-addon">
+                                <input class="form-control " type="text" name="" id="achievementTaskField-0"
+                                    placeholder="Type Name..." aria-label="Recipient's " aria-describedby="my-addon">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text working-history" id="icon-achievement-task-0"
                                         onclick="AddAchievementField(id)"><i class="fa fa-plus btn btn-primary"
                                             aria-hidden="true"></i></span>
                                 </div>
                             </div>
+                            <small id="achievementTaskField-0-feedback"
+                                class="form-text  invalid-feedback text-danger"></small>
                         </div>
                         <!-- location section-->
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text working-history co" id="">Location</span>
+                                <span class="input-group-text working-history" id="">Location</span>
                             </div>
-                            <input class="form-control " type="text" name="" placeholder="Type Name..."
+                            <input class="form-control " type="text" name="" id="location-0" placeholder="Type Name..."
                                 aria-label="Recipient's " aria-describedby="my-addon">
+                            <small id="location-0-feedback" class="form-text  invalid-feedback text-danger"></small>
                         </div>
                     </div>
                 </div>
                 <!-- achievement section end -->
-
-
+                <br>
                 <div class="text-center" style="background-color: #60eaf5a6;">
                     <span class="">Add More <i class="fa fa-plus btn btn-primary mx-1" aria-hidden="true"
                             id="icon-add-achievements"></i></span>
