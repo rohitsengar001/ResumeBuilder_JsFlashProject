@@ -1,6 +1,7 @@
 # ResumeBuilder_JsFlashProject
 this is a resume Builder/creator  software.
-###output url:https://resume-builder-js-flash-project.vercel.app/https://resume-builder-js-flash-project.vercel.app/
+###output url:https://resume-builder-js-flash-project.vercel.app/
+
 
 ![image](https://user-images.githubusercontent.com/39033056/136691483-fe757310-72d2-44f0-8a16-4d8d1a172633.png)
 
